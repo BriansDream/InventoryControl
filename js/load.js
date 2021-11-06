@@ -1,10 +1,22 @@
 
 
-// Pure function
-const formLogin = () => {
-    // getElement body and put background for that
-    const body = document.body;
-    body.classList.add('bodyClass');
+
+const inventoryControl =  {
+    username: "Andesta",
+    password: "12345"
+}
+
+// Apply Event capturing 
+// Mentrigger event handler dari parent ke child
+// Ketika browser diload maka tampilkan element yang sudah dibuat
+// window.addEventListener('load',())  
+
+const loadFormLogin = () => {
+
+    const backgroundContainer = document.createElement('div');
+    backgroundContainer.setAttribute('class','backgroundContainer');
+   
+  
     // Create container form login
     const container = document.createElement('section');
     container.setAttribute('id','container-form');
@@ -12,7 +24,7 @@ const formLogin = () => {
         max-width: 100%;
         width: 900px;
         margin: 0 auto;
-        margin-top: 200px;
+        margin-top: 15%;
         padding: 50px;
         background-color: white;
         border-radius: 10px;
@@ -23,11 +35,16 @@ const formLogin = () => {
     const formLogin = document.createElement('form');
     const inputUsername = document.createElement('input');
     const inputPassword = document.createElement('input');
-    const formButton = document.createElement('button');
+    const formButton = document.createElement('input');
+
+    // Form
+    formLogin.setAttribute('class','formLogin');
     
     // Input username
     inputUsername.setAttribute('class',"username");
+    inputUsername.setAttribute('type','text');
     inputUsername.setAttribute('placeholder',"Input your username");
+    inputUsername.setAttribute('maxlength','15');
     inputUsername.style.cssText = `
         padding: 10px;
         font-size: 1.5em;
@@ -42,6 +59,7 @@ const formLogin = () => {
     inputPassword.setAttribute('class','password');
     inputPassword.setAttribute('placeholder',"Please input your password");
     inputPassword.setAttribute('type','password');
+    inputPassword.setAttribute('maxlength','15');
     // Menambahkan style class yang dibuat di CSS
     inputPassword.classList.add('inputStyle');
 
@@ -73,8 +91,64 @@ const formLogin = () => {
         margin-bottom: 20px;
         `;
     container.insertBefore(titleContainer,formLogin);
-    body.appendChild(container);
+    backgroundContainer.appendChild(container);
+    document.body.appendChild(backgroundContainer);
+
+    
+  
+ 
 }
 
 
-document.onload = formLogin();
+
+const validationLogin = () => {
+    const formLogin = document.querySelector('.formLogin');
+
+    formLogin.addEventListener('submit',(event) => {
+        const username = document.querySelector('.username').value;
+        const password = document.querySelector('.password').value;
+
+        try {
+                if(username == '' || username == null, password == '' || password == null) {
+                    throw new SyntaxError('Brother Form login cannot be empty!');
+                } 
+
+                if(username.toLocaleLowerCase() == inventoryControl.username.toLocaleLowerCase() && password.toLocaleLowerCase() == inventoryControl.password.toLocaleLowerCase()) {
+                    alert("Login Succesfully");
+
+                    const backgroundContainer = document.querySelector('.backgroundContainer');
+                    backgroundContainer.remove();
+                    const mainContent = document.getElementById('content');
+                    mainContent.removeAttribute('hidden');
+
+                } else {
+                    throw new ReferenceError('Check again your username or password');
+                }
+
+        } catch (error) {
+                if(error instanceof SyntaxError) {
+                    alert(error.message);
+                } else if(error instanceof ReferenceError) {
+                    alert(error.message);
+                } else {
+                    console.log(error);
+                }
+        }
+
+        
+    })
+}
+
+document.onload = loadFormLogin();
+validationLogin();
+
+  // Create custom event berasal dari class Event
+    // Memungkinkan untuk menjalankan sebuah event handler setelah sebuah event handler lain selesai dipanggil
+    // const ValidationUsernamePassword = new Event('ValidationUsernamePassword');
+    // const loginForm = document.querySelector('.btnForm');
+    // loginForm.addEventListener('ValidationUsernamePassword', customEventHandler());
+    // loginForm.addEventListener('click',(event) => {
+    //     // Membangkitkan custom event
+    //     loginForm.dispatchEvent(ValidationUsernamePassword);
+
+    // })

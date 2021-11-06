@@ -5,11 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>briansdream inventory controll</title>
+    <link rel="stylesheet" href="./css/mainContent.css">
     <link rel="stylesheet" href="./css/formlogin.css">
+    
 </head>
 <body>
    
+    <div id="content">
+        
+        <section class="container-search">
+            <form action="" id="searchForm">
+                <input type="text" class="search-input" placeholder="Looking for something?" maxlength="">
+                <input type="submit" value="Search" class="btnSearch">
+               
+            </form>
+           
+        </section>
 
-    <script src="./js/load.js" type="module"></script>
+
+        <section class="container-add">
+            <div class="btnAdd">
+              add
+            </div>
+        </section>
+
+        <section class="addFormContainer" hidden>
+
+            <div class="title">
+            <h1>Form Add Item</h1>
+        </div>
+            <form action="" class="addForm">
+                <input type="text" placeholder="item name" maxlength="15" class="itemName">
+                <input type="text" placeholder="stock of item" class="stockItem">
+                <input type="submit" value="Add Item" class="btnForm">
+            </form>
+
+        </section>
+
+       
+    </div>
+    <!-- <script src="./js/load.js"></script> -->
+    <script src="./js/main.js"></script>
+    <!-- <script src="./js/load.js" type="module"></script> -->
 </body>
 </html>
