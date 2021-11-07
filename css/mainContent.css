@@ -41,30 +41,3 @@
 }
 
 /* Last Search */
-
-
-/* Add Button */
-
-#btnAdd-container {
-
-    border: 1px solid black;
-
-}
-
-.btnAdd {
-    padding: 10px;
-    background-color: rgb(255, 105, 105);
-    max-width: fit-content;
-    position: relative;
-    border-radius: 30px;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    right: 100%;
-
-
-
-}
-
-/* Last Add Button */
