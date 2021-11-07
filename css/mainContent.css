@@ -3,3 +3,41 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+/* Search */
+
+#search-container {
+    max-width: 1440px;
+    border: 1px solid black;
+    padding: 10px;
+
+}
+
+#search-container .search-form {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.search-form .search-text {
+    max-width: 100%;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 30px;
+    border: 0.1px solid rgb(105, 105, 105);
+
+}
+
+.search-form .search-button {
+    font-size: 1.5em;
+    border-radius: 30px;
+    color: white;
+    font-weight: lighter;
+    text-transform: lowercase;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: rgb(50, 205, 115);
+    cursor: pointer;
+    padding: 3px;
+}
+
+/* Last Search */
