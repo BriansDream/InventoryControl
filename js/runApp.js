@@ -1,5 +1,4 @@
 import { searchFunc } from "./searchFunc.js";
-import { btnAddFunc } from "./crudFunc.js";
+import { btnShowAddnCloseAddFunc,btnClearAllFunct } from "./crudFunc.js";
 // Expression function
 
-btnAddFunc;
