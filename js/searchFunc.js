@@ -10,5 +10,5 @@ const searchFunc = (data) => {
         event.preventDefault();
     })
 }
-searchFunc(searchText);
+
 export {searchFunc};

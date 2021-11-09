@@ -2,13 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 /* Search */
 
 #search-container {
     max-width: 1440px;
-
     padding: 10px;
     margin: 0 auto;
 }
@@ -41,3 +41,175 @@
 }
 
 /* Last Search */
+
+/* Button add */
+
+
+#btnadd-container {
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    z-index: -100;
+}
+
+.btnAdd {
+    max-width: 50px;
+    max-height: 50px;
+    background-color: #ff6f6f;
+    font-size: 2em;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 100%;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    position: sticky;
+    left: 94%;
+    top: 90%;
+}
+
+/* Last button add */
+
+/* Add Form */
+
+#addform-container {
+    max-width: 100%;
+    width: 900px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    padding: 50px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 20px;
+    position: relative;
+
+
+}
+
+#addform-container .title {
+    font-size: 1.5em;
+
+}
+
+#addform-container #formAdd {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#formAdd input {
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 1.5em;
+    border-radius: 10px;
+    border: 0.2px solid rgb(88, 88, 88);
+    padding: 10px;
+}
+
+#formAdd .btnAddData {
+    border-radius: 30px;
+    background-color: rgb(255, 69, 100);
+    color: white;
+    font-weight: bolder;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#addform-container .closeFormAdd {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+
+/* Last Add form */
+
+/* TABLE  */
+#table-container {
+
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 1.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+#table-container .table-title {
+    font-weight: lighter;
+}
+
+.table {
+    width: 100%;
+
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 10px;
+    max-width: 1440px;
+
+}
+
+.table thead {
+    background-color: rgb(255, 72, 142);
+    color: white;
+    font-weight: bolder;
+}
+
+table thead th {
+    padding: 10px;
+}
+
+
+/* LAST TABLE */
+
+
+
+/* CLEAR ALL DATA */
+
+#container-clearAll {
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 1440px;
+}
+
+#container-clearAll .btnClearAll {
+    padding: 10px;
+    font-size: 1.5em;
+    background-color: rgb(35, 185, 35);
+    color: white;
+    font-weight: bolder;
+    width: fit-content;
+    text-align: center;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+}
+
+/* LAST CLEAR ALL DATA */
+
+
+
+
+/* BUTTON UPDATE AND DELETE DATA */
+
+.btnUpdateDelete {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #ff8c8c;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: white;
+    font-weight: bolder;
+    text-align: center;
+    max-width: fit-content;
+}
+
+/* LAST BUTTON UPDATE AND DELETE DATA */

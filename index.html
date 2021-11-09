@@ -20,13 +20,61 @@
             </form>
         </section>
 
-      
-     
-       
 
-       
+        <!-- Add Form -->
+      <section id="btnadd-container">
+        <div class="btnAdd">
+            +
+        </div>
+    </section>
+
+    <section id="addform-container" hidden>
+        <div class="title">
+            <h1>Form Add</h1>
+        </div>
+        <form action="" id="formAdd">
+            <input type="text" placeholder="Name of item" class="addNameItem" maxlength="15">
+            <input type="number" placeholder="stock of item" class="addStockItem" maxlength="15">
+            <input type="submit" value="add data" class="btnAddData">
+        </form>
+
+        <h1 class="closeFormAdd">
+            X
+        </h1>
+    </section>
+<!-- Last Add Form -->
+
+
+<!-- Table -->
+
+<section id="table-container">
+    <table class="table">
+        <h1 class="table-title">briansdream inventory control</h1>
+        <thead>
+            <th>No.</th>
+            <th>Name of item</th>
+            <th>Stock of Item</th>
+            <th>function</th>
+        </thead>
+
+        <tbody class="table-body">
+
+        </tbody>
+
+    </table>
+</section>
+
+<section id="container-clearAll">
+    <div class="btnClearAll">
+        clear all data
     </div>
-    <!-- <script src="./js/load.js"></script> -->
+</section>
+
+
+
+
+    </div>
+    <script src="./js/storage.js"></script>
     <script src="./js/runApp.js" type="module"></script>
    
     <!-- <script src="./js/load.js" type="module"></script> -->
