@@ -50,7 +50,7 @@ const renderHistoryData = () => {
         row.innerHTML = `<td> ${index} </td>`;
         row.innerHTML += `<td> ${historyData[index].itemName} </td>`;
         row.innerHTML += `<td> ${historyData[index].itemStock} </td>`;
-        row.innerHTML += `<td> ${row.appendChild(updateButton())} </td>`;
+       
 
         tableBody.appendChild(row);
     }
