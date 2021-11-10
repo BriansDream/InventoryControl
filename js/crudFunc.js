@@ -38,12 +38,18 @@ const addDataFunct = () => {
         const addNameItem = document.querySelector('.addNameItem').value;
         const addStockItem = document.querySelector('.addStockItem').value;
 
-     
         try {
                 if(addNameItem == '' || addNameItem == null, addStockItem == '' || addStockItem == null) {
                     throw new SyntaxError('Input form cannot be empty');
                 }
-
+                const addData = { 
+                    id: DateforID().toString(),
+                    itemName: addNameItem.toString(),
+                    itemStock: addStockItem.toString()
+                }
+                putData(addData);
+                renderHistoryData();
+                console.log(showData());
 
         } catch (error) {
             if(error instanceof SyntaxError) {
@@ -51,19 +57,6 @@ const addDataFunct = () => {
                 event.preventDefault();
             }
         }
-
-
-        const addData = { 
-            id: DateforID().toString(),
-            itemName: addNameItem.toString(),
-            itemStock: addStockItem.toString()
-        }
-        putData(addData);
-        
-        alert('Data added succesfuly');
-        renderHistoryData();
-        console.log(showData());
-   
     })
 }
 

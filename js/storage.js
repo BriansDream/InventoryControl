@@ -1,5 +1,8 @@
-const cacheKey = 'CACHE_KEY';
 
+
+
+
+const cacheKey = 'CACHE_KEY';
 const checkWebStorage = () => {
     return typeof(Storage) != null;
 }
@@ -35,52 +38,65 @@ const showData = () => {
 }
 }
 
+const reloadPageFunct = () => { 
+    return location.reload()
+}
+
 const renderHistoryData = () => {
     const historyData = showData();
  
     const tableBody = document.querySelector('.table-body');
-    
     // Agar tidak terjadi data ganda
     // After data added clean up body table and update using data in storage 
         tableBody.innerHTML = "";
+      
     for(let index=0; index < historyData.length; index++) {
-        
-        // Create row element
+        // Create new element
         const row = document.createElement('tr');
+        const btnUpdate = document.createElement('button');
+        const btnDelete = document.createElement('button');
+        const td = document.createElement('td');
+
         row.innerHTML = `<td> ${index} </td>`;
         row.innerHTML += `<td> ${historyData[index].itemName} </td>`;
         row.innerHTML += `<td> ${historyData[index].itemStock} </td>`;
-       
 
+
+        btnDelete.setAttribute('class','btnDelete');
+        btnDelete.innerHTML = 'Delete';
+        btnDelete.classList.add('btnUpdateDelete');
+        
+        // Memasukkan objek create elemen ke dalam HTML
+        td.appendChild(btnDelete);
+        td.insertBefore(btnUpdate,btnDelete);
+        row.appendChild(td);
         tableBody.appendChild(row);
-    }
-}
 
-const updateButton = () => {
-    const btnUpdate = document.createElement('div');
-    btnUpdate.setAttribute('class','btnUpdate');
-    btnUpdate.innerHTML = "Update";
-    btnUpdate.classList.add('btnUpdateDelete');
-    return btnUpdate;
+        
+        // When delete button clicked, run this funct
+        btnDelete.addEventListener('click', () => {
+        // if data's not empty
+        if(historyData != '') {
+            const getIdData = historyData[index].id; 
+        // Check if id thaw we click == with id in storage 
+           if(getIdData == historyData[index].id) {
+        // Delete based on we've clicked 
+            historyData.splice(index,1);
+        // every transaction with local storage have to check web storage
+                if(checkWebStorage()) {
+                    localStorage.removeItem(cacheKey);
+                    historyData.forEach(data => {
+                        putData(data);
+                    });  
+                }
+                
+           }
 
-
-}
-
-
-
-// Clear all data from storage
-const btnClearAllData = () => {
-    if(checkWebStorage()) {
-        if(localStorage.getItem(cacheKey) == null) {
-            alert('data belum ada');
-        } else {
-            localStorage.removeItem(cacheKey);
-            renderHistoryData();
-            console.log(showData());
         }
+        reloadPageFunct();
+      
+        })
     }
+   
 }
-
-
-
 renderHistoryData();

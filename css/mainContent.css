@@ -211,6 +211,9 @@ table thead th {
     font-weight: bolder;
     text-align: center;
     max-width: fit-content;
+    border-radius: 10px;
+    border: none;
+    margin: 2px;
 }
 
 /* LAST BUTTON UPDATE AND DELETE DATA */
