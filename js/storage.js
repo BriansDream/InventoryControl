@@ -1,4 +1,5 @@
 
+import { customEventCloseFormUpdateHandler } from "./customEventCollection.js";
 
 
 
@@ -66,11 +67,73 @@ const renderHistoryData = () => {
         btnDelete.innerHTML = 'Delete';
         btnDelete.classList.add('btnUpdateDelete');
         
+        btnUpdate.setAttribute('class','btnUpdate');
+        btnUpdate.innerHTML = 'Update';
+        btnUpdate.classList.add('btnUpdateDelete');
+        
         // Memasukkan objek create elemen ke dalam HTML
         td.appendChild(btnDelete);
         td.insertBefore(btnUpdate,btnDelete);
         row.appendChild(td);
         tableBody.appendChild(row);
+
+
+
+
+        btnUpdate.addEventListener('click', () => {
+            const updateFormContainer = document.getElementById('updateform-container');
+            const btnCloseUpdate = document.querySelector('.closeUpdate');
+            const formUpdate = document.querySelector('.updateForm');
+            const updateNameItem = document.querySelector('.updateNameItem');
+            const updateStockItem = document.querySelector('.updateStockItem');
+            
+            updateFormContainer.removeAttribute('hidden');
+            
+            if(historyData != '') {
+                const getIdData = historyData[index].id;
+                if(getIdData == historyData[index].id) {
+                  updateNameItem.setAttribute('value', historyData[index].itemName);
+                  updateStockItem.setAttribute('value', historyData[index].itemStock);
+                }
+            }
+
+            formUpdate.addEventListener('submit',() => {
+                    const itemNameUpdate = document.querySelector('.updateNameItem').value;
+                    const itemStockUpdate = document.querySelector('.updateStockItem').value;
+
+                    if(historyData != '') {
+                        const getIdData = historyData[index].id;
+                        if(getIdData == historyData[index].id) {
+                            historyData[index].itemName = itemNameUpdate;
+                            historyData[index].itemStock = itemStockUpdate;
+                            if(checkWebStorage()) {
+                                localStorage.removeItem(cacheKey);
+                                historyData.forEach( dataHistory => {
+                                    putData(dataHistory);
+                                });
+                            }
+                        }
+                    }
+
+                    reloadPageFunct();
+            })
+          
+
+
+            // Custom Event Close form update
+            const customEventCloseFromUpdate = new Event('customEventCloseFormUpdate');
+            btnCloseUpdate.addEventListener('customEventCloseFormUpdate',customEventCloseFormUpdateHandler);
+            btnCloseUpdate.addEventListener('click', () => {
+                // Bangkitkan custom event
+                btnCloseUpdate.dispatchEvent(customEventCloseFromUpdate)
+            });
+
+
+
+
+        })
+
+
 
         
         // When delete button clicked, run this funct
@@ -94,9 +157,11 @@ const renderHistoryData = () => {
 
         }
         reloadPageFunct();
-      
-        })
+
+        });
+
     }
    
 }
 renderHistoryData();
+

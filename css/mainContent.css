@@ -12,6 +12,7 @@
     padding: 10px;
     margin: 0 auto;
     margin-top: 10px;
+    text-align: center;
 }
 
 #search-container .search-form {
@@ -40,6 +41,14 @@
     cursor: pointer;
     padding: 3px;
 }
+
+#search-container .display-search {
+    margin-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+
 
 /* Last Search */
 
@@ -130,8 +139,59 @@
     cursor: pointer;
 }
 
-
 /* Last Add form */
+
+
+/* Update Form */
+
+#updateform-container {
+    max-width: 100%;
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    position: relative;
+}
+
+#updateform-container .updateForm {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#updateform-container .updateForm input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 0.2px solid black;
+    border-radius: 10px;
+    font-size: 1.5em;
+}
+
+#updateform-container .updateForm .button-update {
+    border-radius: 30px;
+    background-color: #ff6f6f;
+    color: white;
+    font-weight: bolder;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+#updateform-container .closeUpdate {
+    position: absolute;
+    top: 0;
+    right: 1%;
+    cursor: pointer;
+}
+
+/* Last Update Form */
+
+
+
 
 /* TABLE  */
 #table-container {
@@ -215,5 +275,20 @@ table thead th {
     border: none;
     margin: 2px;
 }
+
+.btnUpdate {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #ffe600;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    color: black;
+    font-weight: bolder;
+    text-align: center;
+    max-width: fit-content;
+    border-radius: 10px;
+    border: none;
+    margin: 2px;
+}
+
 
 /* LAST BUTTON UPDATE AND DELETE DATA */
