@@ -35,7 +35,7 @@ const addDataFunct = () => {
     const formAdd = document.getElementById('formAdd');
     formAdd.addEventListener('submit', (event) => {
 
-        const addNameItem = document.querySelector('.addNameItem').value;
+        const addNameItem = document.querySelector('.addNameItem').value.toLowerCase();
         const addStockItem = document.querySelector('.addStockItem').value;
 
         try {

@@ -160,10 +160,8 @@ const renderHistoryData = () => {
 
         });
 
-
-
-
     }
    
 }
 renderHistoryData();
+
