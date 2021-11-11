@@ -1,9 +1,8 @@
-
 import { customEventCloseFormUpdateHandler } from "./customEventCollection.js";
 
-
-
 const cacheKey = 'CACHE_KEY';
+
+
 const checkWebStorage = () => {
     return typeof(Storage) != null;
 }
@@ -77,9 +76,6 @@ const renderHistoryData = () => {
         row.appendChild(td);
         tableBody.appendChild(row);
 
-
-
-
         btnUpdate.addEventListener('click', () => {
             const updateFormContainer = document.getElementById('updateform-container');
             const btnCloseUpdate = document.querySelector('.closeUpdate');
@@ -98,8 +94,8 @@ const renderHistoryData = () => {
             }
 
             formUpdate.addEventListener('submit',() => {
-                    const itemNameUpdate = document.querySelector('.updateNameItem').value;
-                    const itemStockUpdate = document.querySelector('.updateStockItem').value;
+                    const itemNameUpdate = document.querySelector('.updateNameItem').value.toLowerCase();
+                    const itemStockUpdate = document.querySelector('.updateStockItem').value.toLowerCase();
 
                     if(historyData != '') {
                         const getIdData = historyData[index].id;
@@ -118,8 +114,6 @@ const renderHistoryData = () => {
                     reloadPageFunct();
             })
           
-
-
             // Custom Event Close form update
             const customEventCloseFromUpdate = new Event('customEventCloseFormUpdate');
             btnCloseUpdate.addEventListener('customEventCloseFormUpdate',customEventCloseFormUpdateHandler);
@@ -128,14 +122,10 @@ const renderHistoryData = () => {
                 btnCloseUpdate.dispatchEvent(customEventCloseFromUpdate)
             });
 
-
-
-
         })
 
 
 
-        
         // When delete button clicked, run this funct
         btnDelete.addEventListener('click', () => {
         // if data's not empty
@@ -160,11 +150,9 @@ const renderHistoryData = () => {
 
         });
 
-
-
-
     }
    
 }
 renderHistoryData();
 
+export {putData,showData,checkWebStorage,cacheKey,renderHistoryData,reloadPageFunct};

@@ -1,5 +1,5 @@
-
-
+import {putData, checkWebStorage,cacheKey,renderHistoryData} from "./storage.js"
+import {reloadPageFunct} from './storage.js'
 
 function btnShowAddnCloseAddFunc() {
     const btnAdd = document.querySelector('.btnAdd');
@@ -63,12 +63,15 @@ const addDataFunct = () => {
 const btnClearAllFunct = () => {
     const btnClearAll = document.querySelector('.btnClearAll');
     btnClearAll.addEventListener('click',(event) => {
-        btnClearAllData();
+        
+        if(checkWebStorage()) {
+            if(localStorage.getItem != null) {
+                localStorage.removeItem(cacheKey);
+                reloadPageFunct();
+            }
+        }
 
     })
 }
 
-btnShowAddnCloseAddFunc();
-addDataFunct();
-btnClearAllFunct();
-export {btnShowAddnCloseAddFunc,btnClearAllFunct};
+export {btnShowAddnCloseAddFunc,addDataFunct,btnClearAllFunct};

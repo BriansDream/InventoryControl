@@ -1,15 +1,11 @@
 
 
+const loginCacheKey = 'Login_cache_key';
 
-const inventoryControl =  {
-    username: "Andesta",
+const IDUSer = { 
+    username: "andesta",
     password: "12345"
 }
-
-// Apply Event capturing 
-// Mentrigger event handler dari parent ke child
-// Ketika browser diload maka tampilkan element yang sudah dibuat
-// window.addEventListener('load',())  
 
 const loadFormLogin = () => {
 
@@ -93,36 +89,32 @@ const loadFormLogin = () => {
     container.insertBefore(titleContainer,formLogin);
     backgroundContainer.appendChild(container);
     document.body.appendChild(backgroundContainer);
-
-    
-  
- 
 }
-
-
 
 const validationLogin = () => {
     const formLogin = document.querySelector('.formLogin');
 
     formLogin.addEventListener('submit',(event) => {
-        const username = document.querySelector('.username').value;
-        const password = document.querySelector('.password').value;
+        const username = document.querySelector('.username').value.toLowerCase();
+        const password = document.querySelector('.password').value.toLowerCase();
 
         try {
                 if(username == '' || username == null, password == '' || password == null) {
                     throw new SyntaxError('Brother Form login cannot be empty!');
                 } 
 
-                if(username.toLocaleLowerCase() == inventoryControl.username.toLocaleLowerCase() && password.toLocaleLowerCase() == inventoryControl.password.toLocaleLowerCase()) {
-                    alert("Login Succesfully");
+                if(username == IDUSer.username.toLocaleLowerCase() && password == IDUSer.password.toLocaleLowerCase()) {
 
-                    const backgroundContainer = document.querySelector('.backgroundContainer');
-                    backgroundContainer.remove();
-                    const mainContent = document.getElementById('content');
-                    mainContent.removeAttribute('hidden');
+                putDataLogin(IDUSer);
+                alert("Login Succesfully");
+
+                const backgroundContainer = document.querySelector('.backgroundContainer');
+                backgroundContainer.remove();
+                const mainContent = document.getElementById('content');
+                mainContent.removeAttribute('hidden');
 
                 } else {
-                    throw new ReferenceError('Check again your username or password');
+                    throw new ReferenceError('Relax and try to remember your username or password');
                 }
 
         } catch (error) {
@@ -134,21 +126,41 @@ const validationLogin = () => {
                     console.log(error);
                 }
         }
-
-        
     })
 }
 
-document.onload = loadFormLogin();
-validationLogin();
+// Check web storage
+const loginCheckWebStorage = () => {
+    return typeof(Storage) != null;
+}
 
-  // Create custom event berasal dari class Event
-    // Memungkinkan untuk menjalankan sebuah event handler setelah sebuah event handler lain selesai dipanggil
-    // const ValidationUsernamePassword = new Event('ValidationUsernamePassword');
-    // const loginForm = document.querySelector('.btnForm');
-    // loginForm.addEventListener('ValidationUsernamePassword', customEventHandler());
-    // loginForm.addEventListener('click',(event) => {
-    //     // Membangkitkan custom event
-    //     loginForm.dispatchEvent(ValidationUsernamePassword);
 
-    // })
+
+const putDataLogin = (data) => {
+    let DataUser = null;
+    if(loginCheckWebStorage()) {
+        if(sessionStorage.getItem(loginCacheKey) == null) {
+            DataUser = [];
+        } else {
+            DataUser = JSON.parse(sessionStorage.getItem(loginCacheKey));
+        }
+
+        DataUser.push(data);
+        sessionStorage.setItem(loginCacheKey,JSON.stringify(DataUser));
+    }
+}
+
+
+const checkDataStillSave = function() {
+        if(loginCheckWebStorage()) {
+            if(sessionStorage.getItem(loginCacheKey) != null) {
+                const backgroundContainer = document.querySelector('.backgroundContainer');
+                backgroundContainer.remove();
+                const mainContent = document.getElementById('content');
+                mainContent.removeAttribute('hidden');
+            }
+        }
+}
+
+
+export {loadFormLogin,validationLogin,checkDataStillSave};

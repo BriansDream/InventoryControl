@@ -1,4 +1,4 @@
-import { EmptyData,noData } from "./classCollection.js";
+import { EmptyData } from "./classCollection.js";
 
 const searchFunc = (dataInventory) => {
     const searchForm = document.querySelector('.search-form');
@@ -13,10 +13,12 @@ const searchFunc = (dataInventory) => {
                     throw new EmptyData("Search input cannot be empty!");
                 }
             
-
                dataInventory.map((data) => {
                     if(searchText == data.itemName) {
                         displaySearch.innerHTML = `Item name: ${data.itemName} <br> Stock: ${data.itemStock}`;
+                       
+                        event.preventDefault();
+            
                     } 
                 })
                 event.preventDefault();
@@ -31,5 +33,5 @@ const searchFunc = (dataInventory) => {
     })
 }
 
-searchFunc(showData());
-export {searchFunc};
+
+export {searchFunc}
